@@ -254,6 +254,7 @@ button:last-child {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+/* Default styles for the modal overlay and modal */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -272,16 +273,28 @@ button:last-child {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  max-width: 46%; /* Adjust the maximum width as needed */
   width: 100%;
+  max-width: 46%; /* Adjust the maximum width as needed */
   max-height: 30vh; /* Adjust the maximum height as needed */
-  /* overflow-y: auto; */
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   border-radius: 10%;
 }
 
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 600px) {
+  .modal {
+    max-width: 80%; /* Adjust the maximum width for smaller screens */
+    max-height: 70vh; /* Adjust the maximum height for smaller screens */
+  }
+  
+  .modal-buttons button {
+    max-width: 100%; /* Allow buttons to take full width on smaller screens */
+  }
+}
+
+/* Modal buttons and confirm/cancel buttons styling */
 .modal-buttons {
   display: flex;
   justify-content: flex-end;
@@ -301,3 +314,4 @@ button:last-child {
   display: flex;
   margin-top: 15px;
 }
+
