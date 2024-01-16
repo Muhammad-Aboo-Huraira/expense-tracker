@@ -707,6 +707,7 @@ onAuthStateChanged(auth, async (user) => {
         }
       } catch (error) {
         console.error("Error adding category: ", error);
+        console.log(error);
       }
     }
 
