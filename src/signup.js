@@ -154,7 +154,7 @@ signupForm.addEventListener("submit", async (e) => {
     displaySuccessMessage("User signed up successfully!", "signup-success");
     submitButton.disabled = false;
     submitButton.innerHTML = "Signup";
-    window.location.href = "signIn.html";
+    window.location.href = "index.html";
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
       displayErrorMessage("*Email address already in use.", "email-error");

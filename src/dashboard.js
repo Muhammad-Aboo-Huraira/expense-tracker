@@ -1267,7 +1267,7 @@ onAuthStateChanged(auth, async (user) => {
 
     updateDonutChartFromFirestore();
   } else {
-    window.location.href = "signIn.html";
+    window.location.href = "index.html";
   }
 });
 
@@ -1275,7 +1275,7 @@ const logoutButton = document.querySelector(".logout");
 logoutButton.addEventListener("click", () => {
   signOut(auth)
     .then(() => {
-      window.location.href = "signIn.html";
+      window.location.href = "index.html";
       window.history.replaceState(null, "", "/");
     })
     .catch((err) => {
