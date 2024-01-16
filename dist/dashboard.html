@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+    </div>
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal" id="confirmation-modal">
+        <p id="confirmation-message"></p>
+        <div class="modal-buttons">
+            <button id="confirm-delete" class="confirm-btn">Yes</button>
+            <button id="cancel-delete" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+
+
+    <div class="body">
+
+        <div class="dashboard-container">
+
+            <h4 id="greeting"></h4>
+            <form type="submit" method="post" class="incExp">
+                <h3>Add Transaction</h3>
+                <div class="input-container">
+                    <input type="number" id="amount" placeholder="Enter amount" required>
+                    <select class="bank-select" size="2" aria-label="size 3 select example" required>
+
+                    </select>
+                </div>
+                <div class="error-message" id="incExp-error"></div>
+
+                <div class="buttons-container">
+                    <button id="expenseBtn" type="expenseBtn">Record Expense</button>
+                    <button id="incomeBtn" type="incomeBtn">Record Income</button>
+                </div>
+            </form>
+            <form class="addCatForm">
+                <h4>Categories</h4>
+                <select class="catSel" size="3" aria-label="size 3 select example">
+
+                </select>
+                <input type="text" class="addCatInp" placeholder="Add categories">
+                <div class="error-message" id="addCat-error"></div>
+                <button id="addCatBtn" type="submit">Add Category</button>
+                <button id="deleteCatBtn" class="cancelbtn">Delete Category</button>
+            </form>
+            <br><br>
+            <h3>Transaction history</h3>
+            <div id="table" style="overflow-y: auto; max-height: 330px;">
+                <table class="table" id="TransHisttable">
+                    <tbody>
+                        <tr>
+                            <td>Perform transactions to save them here.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="account-container">
+
+            <h4>What you have</h4>
+            <div class="amount-container" style="display: flex;">
+                <h4><strong>PKR 0</strong>
+                </h4>
+                <div>
+                    <button class="logout">
+                        Logout
+                    </button>
+                </div>
+            </div>
+            <div class="accTotal-container">
+                <div style="margin: 50px;" class="accCash-container">
+                    <p>Cash</p>
+                    <strong>0</strong>
+                </div>
+                <div style="margin: 50px;" class="accBank-container">
+                    <p>Bank</p>
+                    <strong>0</strong>
+                </div>
+                <div style="margin: 50px;" class="accSav-container">
+                    <p>Saving</p>
+                    <strong>0</strong>
+                </div>
+            </div>
+            <form method="post" class="addAccForm">
+                <h4>Add Accounts</h4>
+                <div class="container">
+                    <input class="addAccName" type="text" placeholder="accountName" required>
+                    <input class="addAccAmount" type="number" placeholder="amount" required>
+                    <div class="error-message" id="addAcc-error"></div>
+                    <button type="submit" class="add-acc">Add Account</button>
+                    <h4>All accounts</h4>
+                    <select class="all-acc" size="3" aria-label="size 3 select example"></select>
+                    <div class="error-message" id="delAcc-error"></div>
+                    <button type="button" id="delAccBtn" class="cancelbtn">Delete Account</button>
+
+                </div>
+            </form>
+            <div class="donut-chart-container">
+                <canvas id="myDonutChart" width="250" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../src/dashboard.js"></script>
+</body>
+
+</html>

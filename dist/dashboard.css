@@ -1,0 +1,303 @@
+/* Bordered form */
+form {
+  border: 3px solid #f1f1f1;
+  max-width: 400px; /* Set a maximum width for the form */
+  margin: auto; /* Center the form horizontally */
+  padding: 20px;
+}
+
+/* Full-width inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 5px; /* Adjust the margin as needed */
+}
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn,
+.delHist {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+.delHist {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+/* Center the avatar image inside this container */
+.heading {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+.container p,
+.container span {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* .container a:hover {
+  color: #45a049;
+}
+.container a {
+  color: #04aa6d;
+  text-decoration: none;
+} */
+/* The "Forgot password" text */
+/* span.psw {
+    float: right;
+    padding-top: 16px;
+  } */
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .body {
+    flex-direction: column; /* Stack containers on smaller screens */
+  }
+}
+@media screen and (max-width: 600px) {
+  form {
+    width: 100%; /* Make the form full-width on smaller screens */
+  }
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+.body {
+  display: flex;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.dashboard-container,
+.account-container {
+  max-width: 100%; /* Allow containers to take full width on small screens */
+  width: 100%;
+  margin: 20px auto; /* Adjust margin for spacing */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.accTotal-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.accCash-container,
+.accBank-container,
+.accSav-container {
+  flex: 1;
+  margin: 10px;
+  text-align: center;
+}
+@media screen and (max-width: 600px) {
+  .accCash-container,
+  .accBank-container,
+  .accSav-container {
+    flex: 100%;
+  }
+}
+
+h2 {
+  text-align: left;
+  color: #333;
+}
+
+.input-container {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  width: 100%;
+}
+/* Set a style for all buttons */
+/* button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+} */
+
+button:last-child {
+  margin-right: 0;
+}
+
+#transactionHistory {
+  margin-top: 20px;
+}
+.amount-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.logout {
+  margin-left: 10px;
+  padding: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.donut-chart-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#myDonutChart {
+  max-width: 100%; /* Ensure the chart is responsive */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the chart horizontally */
+}
+#loader-wrapper {
+  position: fixed; 
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  max-width: 46%; /* Adjust the maximum width as needed */
+  width: 100%;
+  max-height: 30vh; /* Adjust the maximum height as needed */
+  /* overflow-y: auto; */
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 10%;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; /* Align items to the bottom */
+  margin-top: 15px;
+}
+
+.modal-buttons button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  max-width: 25%; /* Adjust the maximum width as needed */
+}
+
+#confirm-delete,
+#cancel-delete {
+  display: flex;
+  margin-top: 15px;
+}

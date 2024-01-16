@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+</head>
+
+<body>
+    <form class="login" method="post">
+        <div class="heading">
+            <h1>Sign In</h1>
+        </div>
+
+        <div class="container">
+            <input type="email" placeholder="Email" id="email" name="email" required />
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" name="psw" required />
+                <span class="input-group-text" id="togglePassword">
+                    <i class="bi bi-eye">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                            <path
+                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                        </svg>
+                    </i>
+                </span>
+            </div>
+            <div class="status-message" id="credential-status"></div>
+
+            <button id="loginBtn" type="submit">Login</button>
+        </div>
+
+        <div class="container" style="background-color: #f1f1f1">
+            <p>Do not have an account? <a href="signUp.html">Signup Here</a></p>
+            <span class="psw"><a href="forgotPassword.html" id="forgotPasswordLink">Forgot Password?</a></span>
+        </div>
+    </form>
+
+    <script type="module" src="../src/signin.js"></script>
+</body>
+
+</html>
