@@ -74,8 +74,6 @@ signupForm.addEventListener("submit", async (e) => {
       "*Password should atleast be 6 characters.",
       "password-error"
     );
-    usernameInput.value = "";
-    emailInput.value = "";
     passwordInput.value = "";
     setTimeout(() => {
       clearErrorMessages();
@@ -150,15 +148,15 @@ signupForm.addEventListener("submit", async (e) => {
       });
     }
     addTransactionHistory();
-    // Add initial transaction to 'transactionDetails' collection
-    displaySuccessMessage("User signed up successfully!", "signup-success");
     submitButton.disabled = false;
     submitButton.innerHTML = "Signup";
-    window.location.href = "index.html";
+    displaySuccessMessage("User signed up successfully!", "signup-success");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
       displayErrorMessage("*Email address already in use.", "email-error");
-      usernameInput.value = "";
       emailInput.value = "";
       passwordInput.value = "";
       setTimeout(() => {

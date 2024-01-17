@@ -33,7 +33,7 @@
             <form type="submit" method="post" class="incExp">
                 <h3>Add Transaction</h3>
                 <div class="input-container">
-                    <input type="number" id="amount" placeholder="Enter amount" required>
+                    <input type="number" id="amount" placeholder="Enter amount" min="1" max="100000000"  required>
                     <select class="bank-select" size="2" aria-label="size 3 select example" required>
 
                     </select>
@@ -58,7 +58,7 @@
             <br><br>
             <h3>Transaction history</h3>
             <div id="table" style="overflow-y: auto; max-height: 330px;">
-                <table class="table" id="TransHisttable">
+                <table class="table" id="TransHisttable" >
                     <tbody>
                         <tr>
                             <td>Perform transactions to save them here.</td>
@@ -97,8 +97,8 @@
             <form method="post" class="addAccForm">
                 <h4>Add Accounts</h4>
                 <div class="container">
-                    <input class="addAccName" type="text" placeholder="accountName" required>
-                    <input class="addAccAmount" type="number" placeholder="amount" required>
+                    <input class="addAccName" type="text" placeholder="Enter account name" required>
+                    <input class="addAccAmount" type="number" placeholder="Enter account amount" min="1" max="100000000" required>
                     <div class="error-message" id="addAcc-error"></div>
                     <button type="submit" class="add-acc">Add Account</button>
                     <h4>All accounts</h4>

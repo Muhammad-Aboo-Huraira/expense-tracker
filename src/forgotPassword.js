@@ -52,11 +52,6 @@ const submitButton = loginForm.querySelector('button[type="submit"]');
 const loader = document.createElement("span");
 loader.className = "loader";
 
-const cancelBtn = document.querySelector(".cancelbtn");
-cancelBtn.addEventListener("click", () => {
-  window.location.href = "signIn.html";
-});
-
 document.addEventListener("DOMContentLoaded", (e) => {
   e.preventDefault();
   const resetButton = document.querySelector("button");
@@ -70,7 +65,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
     submitButton.appendChild(loader);
 
     const enteredEmail = emailInput.value.trim();
-    clearErrorMessages();
+
+    if (!enteredEmail) {
+      displayErrorMessage("Please enter email!", "credential-status");
+      setTimeout(() => {
+        clearErrorMessages();
+      }, 2000);
+      submitButton.disabled = false;
+      submitButton.innerHTML = "Reset Password";
+      return;
+    }
     // Check if the email exists in the "users" collection
     const isEmailRegistered = await isEmailAlreadyRegistered(enteredEmail);
 
@@ -82,6 +86,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
             "Password reset email sent, Check your inbox",
             "credential-status"
           );
+          setTimeout(() => {
+            clearErrorMessages();
+          }, 2000);
           submitButton.disabled = false;
           submitButton.innerHTML = "Reset Password";
           emailInput.value = "";
@@ -91,20 +98,26 @@ document.addEventListener("DOMContentLoaded", (e) => {
             "Error sending password reset email!",
             "credential-status"
           );
+          setTimeout(() => {
+            clearErrorMessages();
+          }, 2000);
         });
-      clearErrorMessages();
+      
     } else {
       // Email is not registered
       displayErrorMessage(
         "This email is not registered. Please enter a valid email!",
         "credential-status"
       );
+      setTimeout(() => {
+        clearErrorMessages();
+      }, 2000);
       submitButton.disabled = false;
       submitButton.innerHTML = "Reset Password";
       emailInput.value = "";
     }
   });
-  clearErrorMessages();
+  
 });
 
 // Function to check if the email is already registered in the "users" collection

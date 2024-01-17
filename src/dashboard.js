@@ -437,25 +437,25 @@ onAuthStateChanged(auth, async (user) => {
           confirmDeleteBtn.innerHTML = "";
           confirmDeleteBtn.appendChild(loader);
           const selectedCategoryOptions =
-          deleteCatSel.options[deleteCatSel.selectedIndex];
+            deleteCatSel.options[deleteCatSel.selectedIndex];
           // Check if the selected category is one of the first three categories
-          
+
           if (!selectedCategoryOptions) {
             displayErrorMessage(
               "Please select a category to delete!",
               "addCat-error"
-              );
-              confirmDeleteBtn.disabled = false;
-              confirmDeleteBtn.innerHTML = "Yes";
-              addCatForm.reset();
-              setTimeout(() => {
-                clearErrorMessages();
-              }, 2000);
-              return;
-            }
-            const selectedCategory =
+            );
+            confirmDeleteBtn.disabled = false;
+            confirmDeleteBtn.innerHTML = "Yes";
+            addCatForm.reset();
+            setTimeout(() => {
+              clearErrorMessages();
+            }, 2000);
+            return;
+          }
+          const selectedCategory =
             deleteCatSel.options[deleteCatSel.selectedIndex].id;
-            const isDefaultCategory = isDefaultCategoryToDelete(selectedCategory);
+          const isDefaultCategory = isDefaultCategoryToDelete(selectedCategory);
           if (isDefaultCategory) {
             displayErrorMessage(
               "Default categories cannot be deleted!",
@@ -542,7 +542,7 @@ onAuthStateChanged(auth, async (user) => {
         console.error("Error deleting account: ", error);
       }
     }
-    
+
     function isDefaultCategoryToDelete(category) {
       const defaultCategories = ["Home", "Shopping", "Utility Bills"];
       return defaultCategories.includes(category);
@@ -666,6 +666,7 @@ onAuthStateChanged(auth, async (user) => {
         const querySnapshot = await getDocs(
           collection(db, "transactionDetails")
         );
+        
 
         if (querySnapshot.size > 0) {
           querySnapshot.forEach(async (document) => {
@@ -738,6 +739,8 @@ onAuthStateChanged(auth, async (user) => {
             "Please select a bank and enter the amount.",
             "incExp-error"
           );
+          incomeBtnForm.disabled = false;
+          incomeBtnForm.innerHTML = "Record Income";
           incExpForm.reset();
           addCatForm.reset();
           setTimeout(() => {
@@ -747,6 +750,8 @@ onAuthStateChanged(auth, async (user) => {
         }
         if (amount < 0 || amount > 100000000) {
           displayErrorMessage("Please enter valid amount.", "incExp-error");
+          incomeBtnForm.disabled = false;
+          incomeBtnForm.innerHTML = "Record Income";
           incExpForm.reset();
           addCatForm.reset();
           setTimeout(() => {
@@ -907,7 +912,7 @@ onAuthStateChanged(auth, async (user) => {
       expenseBtnForm.appendChild(loader);
       try {
         const user = auth.currentUser;
-
+        
         // Get the selected bank, category, and amount
         const bankOp = document.querySelector(".bank-select");
         const category = document.querySelector(".catSel").value;
@@ -916,7 +921,8 @@ onAuthStateChanged(auth, async (user) => {
         const selectedBankId = bankOp.value;
         const amount = document.getElementById("amount").value;
         const optId = bankOp.options[bankOp.selectedIndex];
-
+        let expenseAmount = parseInt(amount);
+        
         if (!selectedBankId || !amount || !category) {
           displayErrorMessage(
             "Please select a bank, a category and enter the amount.",
@@ -943,27 +949,26 @@ onAuthStateChanged(auth, async (user) => {
           return;
         }
 
-        const expenseAmount = parseInt(amount);
-
         // Determine the type of selected option based on its document ID
         const isCash = selectedBankId === "Cash";
         const isSaving = selectedBankId === "Saving";
-
+        
         if (isCash || isSaving) {
           // Update cash or saving in the accounts table
           const accountsCollection = collection(db, "accounts");
           const accountsQuery = query(
             accountsCollection,
             where("user_id", "==", user.uid)
-          );
-
-          // Use onSnapshot to listen for changes
-          const unsubscribeAccounts = onSnapshot(accountsQuery, (snapshot) => {
-            if (snapshot.size > 0) {
-              const accountsDocRef = snapshot.docs[0].ref;
-              const currentField = isCash ? "Cash" : "Saving";
-              const currentAmount = snapshot.docs[0].data()[currentField] || 0;
-
+            );
+            
+            // Use onSnapshot to listen for changes
+            const snapshot = await getDocs(accountsQuery);
+              if (snapshot.size > 0) {
+                const accountsDocRef = snapshot.docs[0].ref;
+                const currentField = isCash ? "Cash" : "Saving";
+                const currentAmount = snapshot.docs[0].data()[currentField] || 0;
+                console.log("currentAmount:", currentAmount);
+                console.log("expenseAmount:", expenseAmount);
               if (currentAmount < expenseAmount) {
                 displayErrorMessage(
                   "You do not have enough money in your selected account!",
@@ -1033,15 +1038,15 @@ onAuthStateChanged(auth, async (user) => {
               setTimeout(() => {
                 clearErrorMessages();
               }, 2000);
-              unsubscribeAccounts();
             }
-          });
+          
         } else {
           // Update the selected bank's amount
           const bankDocRef = doc(db, "banks", selectedBankId);
 
           // Use onSnapshot to listen for changes
-          const unsubscribeBank = onSnapshot(bankDocRef, (snapshot) => {
+          
+            const snapshot = await getDoc(bankDocRef);
             if (snapshot.exists()) {
               const currentAmount = snapshot.data().amount || 0;
 
@@ -1109,11 +1114,10 @@ onAuthStateChanged(auth, async (user) => {
               setTimeout(() => {
                 clearErrorMessages();
               }, 2000);
-              unsubscribeBank();
+              
             } else {
               console.error("Selected bank does not exist.");
             }
-          });
         }
       } catch (error) {
         console.error("Error recording expense: ", error);

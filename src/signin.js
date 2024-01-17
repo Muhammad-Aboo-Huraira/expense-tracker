@@ -65,7 +65,19 @@ loginForm.addEventListener("submit", async (e) => {
 
   const email = loginForm.email.value;
   const password = loginForm.password.value;
-  clearErrorMessages();
+  if (password.length < 6) {
+    displayErrorMessage(
+      "*Password should atleast be 6 characters.",
+      "credential-status"
+    );
+    loginForm.password.value = "";
+    setTimeout(() => {
+      clearErrorMessages();
+    }, 2000);
+    submitButton.disabled = false;
+    submitButton.innerHTML = "Signup";
+    return;
+  }
   const isEmailRegistered = await isEmailAlreadyRegistered(email);
   if (isEmailRegistered) {
     signInWithEmailAndPassword(auth, email, password)
@@ -74,7 +86,9 @@ loginForm.addEventListener("submit", async (e) => {
         loginForm.reset();
         submitButton.disabled = false;
         submitButton.innerHTML = "Login";
-        window.location.href = "dashboard.html";
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 3000);
       })
       .catch((err) => {
         console.log(err.message);
