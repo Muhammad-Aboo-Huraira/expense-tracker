@@ -1,24 +1,24 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {
   getFirestore,
   collection,
   getDocs,
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import {
   getAuth,
   sendPasswordResetEmail,
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCpgox0LDNhd1B8qcd-hFZ5PV7vrkNSWQ8",
-  authDomain: "expense-tracker-2-8edca.firebaseapp.com",
-  projectId: "expense-tracker-2-8edca",
-  storageBucket: "expense-tracker-2-8edca.appspot.com",
-  messagingSenderId: "413423433388",
-  appId: "1:413423433388:web:ba8f5cb5994938b4b39109",
+  apiKey: "AIzaSyAQa_0QaX1s4fSsBDS_aFZtZkXulIqw04w",
+  authDomain: "expense-trac-cd4b0.firebaseapp.com",
+  projectId: "expense-trac-cd4b0",
+  storageBucket: "expense-trac-cd4b0.appspot.com",
+  messagingSenderId: "759018472466",
+  appId: "1:759018472466:web:2e85f127a8c3cff2b9c4cb"
 };
 
 // Initialize Firebase// Initialize Firebase

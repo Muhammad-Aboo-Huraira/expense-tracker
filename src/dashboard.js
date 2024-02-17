@@ -1,5 +1,5 @@
 // Import Firebase modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
   updateDoc,
@@ -13,20 +13,20 @@ import {
   where,
   getDocs,
   getDoc,
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import {
   getAuth,
   signOut,
   onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCpgox0LDNhd1B8qcd-hFZ5PV7vrkNSWQ8",
-  authDomain: "expense-tracker-2-8edca.firebaseapp.com",
-  projectId: "expense-tracker-2-8edca",
-  storageBucket: "expense-tracker-2-8edca.appspot.com",
-  messagingSenderId: "413423433388",
-  appId: "1:413423433388:web:ba8f5cb5994938b4b39109",
+  apiKey: "AIzaSyAQa_0QaX1s4fSsBDS_aFZtZkXulIqw04w",
+  authDomain: "expense-trac-cd4b0.firebaseapp.com",
+  projectId: "expense-trac-cd4b0",
+  storageBucket: "expense-trac-cd4b0.appspot.com",
+  messagingSenderId: "759018472466",
+  appId: "1:759018472466:web:2e85f127a8c3cff2b9c4cb"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -1013,16 +1013,14 @@ onAuthStateChanged(auth, async (user) => {
                 accCashContainer.innerHTML = `<p>Cash</p><strong>${
                   currentAmount - expenseAmount
                 }</strong>`;
-                const cash = parseInt(fi.Cash.integerValue);
-                cashOption.textContent = `Cash: ${cash - expenseAmount}`;
+                cashOption.textContent = `Cash: ${currentAmount - expenseAmount}`;
                 updateTotalAmount();
               } else {
                 // Display Savings
                 accSavContainer.innerHTML = `<p>Savings</p><strong>${
                   currentAmount - expenseAmount
                 }</strong>`;
-                const Saving = parseInt(fi.Saving.integerValue);
-                savingsOption.textContent = `Saving: ${Saving - expenseAmount}`;
+                savingsOption.textContent = `Saving: ${currentAmount - expenseAmount}`;
                 updateTotalAmount();
               }
               displaySuccessMessage(
@@ -1138,7 +1136,7 @@ onAuthStateChanged(auth, async (user) => {
 
         // Clear the existing rows in the table
         transHisttable.innerHTML = "";
-
+        
         querySnapshot.forEach((doc) => {
           const data = doc.data();
           const row = transHisttable.insertRow();
